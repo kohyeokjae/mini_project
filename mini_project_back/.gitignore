@@ -40,7 +40,7 @@ out/
 # General
 .DS_Store
 .AppleDouble
-.LSOverride
+.LSOverrided
 
 ### properties ###
 /src/main/resources/application.properties
