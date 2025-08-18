@@ -3,6 +3,7 @@ import axios, { AxiosError, type AxiosResponse } from "axios";
 
 export const axiosInstance = axios.create({
   baseURL: import.meta.env.REACT_APP_API_DOMIN || "http://localhost:8080",
+  withCredentials: true,
   timeout: 8000,
 });
 
