@@ -1,6 +1,6 @@
 package com.mini.mini_project_back.filter;
 
-import com.mini.mini_project_back.entity.User;
+import com.mini.mini_project_back.entity.Customer;
 import com.mini.mini_project_back.provider.JwtTokenProvider;
 import com.mini.mini_project_back.repository.UserRepository;
 import com.mini.mini_project_back.security.UserPrincipal;
@@ -42,12 +42,13 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
             if (token != null && jwtTokenProvider.validateToken(token)) {
                 String email = jwtTokenProvider.getEmailFromToken(token);
-                User user = userRepository.findByEmail(email).
+                Customer user = userRepository.findByEmail(email).
                     orElseThrow(() -> new IllegalArgumentException("사용자를 찾을 수 없습니다."));
                 UserPrincipal userPrincipal = UserPrincipal.builder()
                     .userId(user.getUserId())
                     .email(email)
                     .name(user.getName())
+                    .phoneNumber(user.getPhoneNumber())
                     .authorities(Collections.singleton(user::getRole))
                     .build();
 

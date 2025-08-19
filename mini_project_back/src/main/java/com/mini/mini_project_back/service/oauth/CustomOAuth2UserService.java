@@ -3,7 +3,7 @@ package com.mini.mini_project_back.service.oauth;
 import com.mini.mini_project_back.dto.info.KakaoUserInfo;
 import com.mini.mini_project_back.dto.info.NaverUserInfo;
 import com.mini.mini_project_back.dto.info.OAuth2UserInfo;
-import com.mini.mini_project_back.entity.User;
+import com.mini.mini_project_back.entity.Customer;
 import com.mini.mini_project_back.repository.UserRepository;
 import com.mini.mini_project_back.security.UserPrincipal;
 import lombok.RequiredArgsConstructor;
@@ -37,15 +37,13 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
             throw new OAuth2AuthenticationException("지원하지 않는 OAuth2 공급자입니다: " + registrationId);
         }
 
-        System.out.println(userInfo.getProviderId().toString());
-
-        Optional<User> userOptional = userRepository.findByEmail(userInfo.getEmail());
-        User user;
+        Optional<Customer> userOptional = userRepository.findByEmail(userInfo.getEmail());
+        Customer user;
 
         if (userOptional.isPresent()) {
             user = userOptional.get();
         } else {
-            user = User.builder()
+            user = Customer.builder()
                 .email(userInfo.getEmail())
                 .name(userInfo.getName())
                 .phoneNumber(userInfo.getPhoneNumber())

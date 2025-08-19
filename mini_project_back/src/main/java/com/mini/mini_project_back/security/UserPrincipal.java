@@ -1,15 +1,12 @@
 package com.mini.mini_project_back.security;
 
-import com.mini.mini_project_back.entity.User;
+import com.mini.mini_project_back.entity.Customer;
 import lombok.*;
-import net.minidev.json.annotate.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 
 import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
 import java.util.Map;
 
 @Getter
@@ -26,7 +23,7 @@ public class UserPrincipal implements UserDetails, OAuth2User {
     @Setter
     private Map<String, Object> attributes;
 
-    public UserPrincipal(Long userId, String email, String name, String phoneNumber,Collection<? extends GrantedAuthority> authorities) {
+    public UserPrincipal(Long userId, String email, String name, String phoneNumber, Collection<? extends GrantedAuthority> authorities) {
         this.userId = userId;
         this.email = email;
         this.name = name;
@@ -34,7 +31,7 @@ public class UserPrincipal implements UserDetails, OAuth2User {
         this.authorities = authorities;
     }
 
-    public static UserPrincipal create(User user, Map<String, Object> attributes) {
+    public static UserPrincipal create(Customer user, Map<String, Object> attributes) {
         UserPrincipal principal = new UserPrincipal(
             user.getUserId(),
             user.getEmail(),
@@ -57,7 +54,9 @@ public class UserPrincipal implements UserDetails, OAuth2User {
     }
 
     @Override
-    public String getPassword() { return ""; }
+    public String getPassword() {
+        return "";
+    }
 
     @Override
     public String getUsername() {
@@ -65,14 +64,22 @@ public class UserPrincipal implements UserDetails, OAuth2User {
     }
 
     @Override
-    public boolean isAccountNonExpired() { return true; }
+    public boolean isAccountNonExpired() {
+        return true;
+    }
 
     @Override
-    public boolean isAccountNonLocked() { return true; }
+    public boolean isAccountNonLocked() {
+        return true;
+    }
 
     @Override
-    public boolean isCredentialsNonExpired() { return true; }
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
 
     @Override
-    public boolean isEnabled() { return true; }
+    public boolean isEnabled() {
+        return true;
+    }
 }
