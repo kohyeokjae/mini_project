@@ -10,6 +10,10 @@ function Header() {
     navigate("/main");
   };
 
+  const onMyPageButtonClick = () => {
+    navigate("/myPage");
+  };
+
   const onLoginButtonClick = () => {
     navigate("/login");
   };
@@ -23,7 +27,7 @@ function Header() {
     <header className={styles.header}>
       <div className={styles.logo}>
         <img
-          src="src/apis/constants/북허브_로그_로그인창.png"
+          src="public/북허브_로그_로그인창.png"
           alt="북허브 로고"
           onClick={onLogoClick}
           className={styles.logoImg}
@@ -33,9 +37,14 @@ function Header() {
         <div>
           <div className={styles.loginInfo}>
             {isLogin ? (
-              <button onClick={onLogoutButtonClick} className={styles.btn}>
-                로그아웃
-              </button>
+              <div style={{ display: "flex", gap: "20px" }}>
+                <button onClick={onMyPageButtonClick} className={styles.btn}>
+                  마이페이지
+                </button>
+                <button onClick={onLogoutButtonClick} className={styles.btn}>
+                  로그아웃
+                </button>
+              </div>
             ) : (
               <button onClick={onLoginButtonClick} className={styles.btn}>
                 로그인 / 회원가입

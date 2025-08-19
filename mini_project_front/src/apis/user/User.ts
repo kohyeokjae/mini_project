@@ -8,11 +8,11 @@ import { AxiosError } from "axios";
 import type { UserInfoResponseDto } from "@/dtos/user/UserInfo.response.dto";
 import { USER_INFO_URL } from "../constants/constants";
 
-export const userInfoRequest = async (): Promise<ResponseDto<UserInfoResponseDto>> => {
+export const userInfoRequest = async (): Promise<
+  ResponseDto<UserInfoResponseDto>
+> => {
   try {
-    const response = await axiosInstance.get(USER_INFO_URL, {
-      withCredentials: true,
-    });
+    const response = await axiosInstance.get(USER_INFO_URL);
     return responseSuccessHandler(response);
   } catch (error) {
     return responseErrorHandler(error as AxiosError<ResponseDto>);

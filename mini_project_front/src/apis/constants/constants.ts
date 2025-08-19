@@ -9,4 +9,5 @@ export const KAKAO_LOGIN_URL = `${API_DOMAIN}/oauth2/authorization/kakao`
 export const NAVER_LOGIN_URL = `${API_DOMAIN}/oauth2/authorization/naver`
 
 export const USER_INFO_URL = `${COMMON_URL}/user`
+export const BOOK_LIST_URL = `${COMMON_URL}/books`
 export const LOGOUT_URL = `${AUTH_URL}/logout`

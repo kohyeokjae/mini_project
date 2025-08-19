@@ -1,7 +1,7 @@
 package com.mini.mini_project_back.entity;
 
-import com.example.bookhub_back.common.enums.CategoryType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.mini.mini_project_back.common.enums.CategoryType;
 import jakarta.persistence.*;
 import lombok.*;
 

@@ -51,7 +51,7 @@ public class SecurityConfig {
             .cors(withDefaults())
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/", "/oauth2/**").permitAll()
+                .requestMatchers("/", "/oauth2/**", "/api/v1/**").permitAll()
                 .anyRequest().authenticated()
             )
             .oauth2Login(oauth2 -> oauth2

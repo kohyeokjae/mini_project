@@ -4,11 +4,11 @@ import Login from "./views/Login";
 import MainPage from "./views/MainPage";
 import Header from "./layouts/header";
 import LoginCallBack from "./views/LoginCallBack";
+import MyPage from "./views/MyPage";
 
 function App() {
   const location = useLocation();
 
-  // 로그인 관련 페이지에서는 헤더 숨기기
   const hideHeader = location.pathname === "/login" || location.pathname === "/login/callback";
 
   return (
@@ -30,6 +30,7 @@ function App() {
         >
           <Routes>
             <Route path="/main" element={<MainPage />} />
+            <Route path="/myPage" element={<MyPage />} />
             <Route path="/login" element={<Login />} />
             <Route path="/login/callback" element={<LoginCallBack />} />
           </Routes>
